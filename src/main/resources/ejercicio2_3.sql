@@ -4,8 +4,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 LOCATION '/user/cloudera/practica1/agePercentiles' AS
 SELECT percentile(cast(age as BIGINT), 0.25) as q1,
           percentile(cast(age as BIGINT), 0.50) as q2, 
-          percentile(cast(age as BIGINT), 0.75) as q3,
-          percentile(cast(age as BIGINT), 0.99) as q4
+          percentile(cast(age as BIGINT), 0.75) as q3
 FROM userhash;
 
 /**
