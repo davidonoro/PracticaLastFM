@@ -1,9 +1,12 @@
-
-select percentile(cast(age as BIGINT), 0.25),
-          percentile(cast(age as BIGINT), 0.50), 
-          percentile(cast(age as BIGINT), 0.75),
-          percentile(cast(age as BIGINT), 1)
-from userhash;
+DROP TABLE IF EXISTS agePercentiles;
+CREATE TABLE agePercentiles
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+LOCATION '/user/cloudera/practica1/agePercentiles' AS
+SELECT percentile(cast(age as BIGINT), 0.25) as q1,
+          percentile(cast(age as BIGINT), 0.50) as q2, 
+          percentile(cast(age as BIGINT), 0.75) as q3,
+          percentile(cast(age as BIGINT), 0.99) as q4
+FROM userhash;
 
 /**
 2.3 Obtener los 10 grupos más escuchados (dataset A) por rango de edad y sexo. Se
@@ -27,7 +30,7 @@ from userhash;
 +-------+-------+-------+--+
 |  _c0  |  _c1  |  _c2  |
 +-------+-------+-------+--+
-*/
 | 20.0  | 23.0  | 28.0  |
 +-------+-------+-------+--+
 1 row selected (65.653 seconds)
+*/
