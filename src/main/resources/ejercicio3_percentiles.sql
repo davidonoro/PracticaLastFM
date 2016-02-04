@@ -12,7 +12,7 @@ FROM userhash;
 hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.dataseta.join.DriverJoin /user/cloudera/practica1/playbyUserGroup /user/cloudera/practica1/userhash /user/cloudera/practica1/joindataA
 
 -- Generacion de fichero de salida agrupado por grupo, rango de edad y sexo 
-hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.dataseta.ejercicio3.DriverEjercicio3 /user/cloudera/practica1/joindataA /user/cloudera/practica1 agePercentiles/000000_0 /user/cloudera/practica1/ejercicio3
+hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.dataseta.ejercicio3.DriverEjercicio3 /user/cloudera/practica1/joindataA /user/cloudera/practica1/agePercentiles/000000_0 /user/cloudera/practica1/ejercicio3
 
 CREATE TABLE ejercicio3 (
 grupo STRING,
