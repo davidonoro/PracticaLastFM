@@ -1,10 +1,10 @@
 -- Usamos rangos edad calculados en ejercicio 3 en agePercentiles
 
 -- Join de los datos de fichero tsv y sql
-hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.datasetab.join.DriverJoin /user/cloudera/practica1/playbyUserGroup /user/cloudera/practica1/userid /user/cloudera/practica1/joindataB
+hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.datasetb.join.DriverJoin /user/cloudera/practica1/tsv/infoPlaysArtistUser /user/cloudera/practica1/sql/userid /user/cloudera/practica1/joindataB
 
--- Generacion de fichero de salida agrupado por grupo, rango de edad y sexo 
-hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.dataseta.ejercicio7.DriverEjercicio7 /user/cloudera/practica1/joindataA /user/cloudera/practica1/agePercentiles/000000_0 /user/cloudera/practica1/ejercicio3
+-- Generacion de fichero de salida agrupado por cancion y rango de edad 
+hadoop jar target/Practica1-0.0.1-SNAPSHOT.jar practica1.datasetb.ejercicio7.DriverEjercicio7 /user/cloudera/practica1/joindataB /user/cloudera/practica1/agePercentiles/000000_0 /user/cloudera/practica1/ejercicio7
 
 CREATE TABLE ejercicio7 (
 cancion STRING,
