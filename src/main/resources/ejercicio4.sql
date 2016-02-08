@@ -3,9 +3,13 @@
 CREATE TABLE countrytopgroup
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 LOCATION '/user/cloudera/practica1/countrytopgroup' AS
-SELECT country, artname, plays
+select aggregatedtotal.country, aggregatedtotal.artname, aggregatedtotal.total 
+from (
+SELECT rs.country, rs.artname, rs.total, row_number() over (Partition BY rs.country order by rs.total desc) as row
 FROM (
-SELECT u2.country, u2.artname, u2.plays, row_number() over (Partition BY u2.country order by u2.plays desc) as row
+SELECT u2.country, u2.artname, sum(u2.plays) as total
 FROM userplaysbygroup_join u2
+group by u2.country, u2.artname
 ) rs
-WHERE row <= 10;
+) aggregatedtotal
+WHERE aggregatedtotal.row <= 10;
