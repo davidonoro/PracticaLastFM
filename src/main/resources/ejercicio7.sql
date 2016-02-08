@@ -18,7 +18,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 LOCATION '/user/cloudera/practica1/ejercicio7Final' AS
 SELECT cancion, rango, plays
 FROM (
-SELECT e7.cancion, e7.rango, e7.plays, row_number() over (Partition BY e7.cancion, e7.rango order by e7.plays desc) as row
+SELECT e7.cancion, e7.rango, e7.plays, row_number() over (Partition BY e7.rango order by e7.plays desc) as row
 FROM ejercicio7 e7
 ) rs
 WHERE row <= 10;
