@@ -21,8 +21,8 @@ public class MapperTable extends Mapper<LongWritable, Text, CustomKey, CustomVal
 		if(campos.length == 6){
 			clave.setUser(campos[1]);
 			clave.setUsuario(true);
-			
 			valor.setGender(campos[2]);
+			
 			valor.setAge(campos[3]);
 			valor.setCountry(campos[4]);
 			valor.setUser(true);
