@@ -1,1 +1,5 @@
 flume-ng agent --conf /etc/flume-ng/conf --conf-file tsv2hdfs.conf --name agent1 -Dflume.root.logger=INFO,console -Xmx1024m -Xms256m
+
+flume-ng agent --conf /etc/flume-ng/conf --conf-file userid2hdfs.conf --name agent1 -Dflume.root.logger=INFO,console -Xmx1024m -Xms256m
+
+flume-ng agent --conf /etc/flume-ng/conf --conf-file userhash2hdfs.conf --name agent2 -Dflume.root.logger=INFO,console -Xmx1024m -Xms256m
