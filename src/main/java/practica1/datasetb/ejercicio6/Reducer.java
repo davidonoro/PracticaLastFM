@@ -21,7 +21,7 @@ public class Reducer extends org.apache.hadoop.mapreduce.Reducer<CustomKey, IntW
 			total = intWritable.get()+total;
 		}
 		
-		arg2.write(new Text(arg0.getSemana()+"\t"+arg0.getSexo()+"\t"+arg0.getCancion()+"\t"+total), NullWritable.get());
+		arg2.write(new Text(arg0.getYear()+"\t"+arg0.getSemana()+"\t"+arg0.getSexo()+"\t"+arg0.getGrupo()+"\t"+arg0.getCancion()+"\t"+total), NullWritable.get());
 	}
 
 }

@@ -28,3 +28,24 @@ group by uj.year,uj.weekYear,uj.gender,uj.traname
 ) agregated
 ) agregatedordered
 where agregatedordered.row <= 10;
+
+--comandos job
+CREATE TABLE ejercicio6 (
+year STRING,
+semana INT,
+sexo STRING,
+grupo STRING,
+tema STRING,
+plays INT)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' 
+LOCATION '/user/cloudera/practica1/ejercicio6';
+
+CREATE TABLE ejercicio6Final
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LOCATION '/user/cloudera/practica1/ejercicio6Final' AS
+SELECT year, semana, sexo, grupo, tema, plays
+FROM (
+SELECT u2.year, u2.semana, u2.sexo, u2.grupo, u2.tema, u2.plays, row_number() over (Partition BY u2.year,u2.semana,u2.sexo order by u2.plays desc) as row
+FROM ejercicio6 u2
+) rs
+WHERE row <= 10;
