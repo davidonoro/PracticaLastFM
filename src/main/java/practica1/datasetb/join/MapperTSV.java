@@ -3,6 +3,7 @@ package practica1.datasetb.join;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +15,26 @@ public class MapperTSV extends Mapper<LongWritable, Text, CustomKey, CustomValue
 	
 	CustomKey clave = new CustomKey();
 	CustomValue valor = new CustomValue();
+	
+	HashMap<Integer, String> days = new HashMap<Integer, String>();
+	
+	
+
+	@Override
+	protected void setup(
+			Mapper<LongWritable, Text, CustomKey, CustomValue>.Context context)
+			throws IOException, InterruptedException {
+	
+		days.put(1, "L");
+		days.put(2, "M");
+		days.put(3, "X");
+		days.put(4, "J");
+		days.put(4, "V");
+		days.put(6, "S");
+		days.put(7, "D");
+	}
+
+
 
 	@Override
 	protected void map(LongWritable key, Text value,
@@ -45,7 +66,10 @@ public class MapperTSV extends Mapper<LongWritable, Text, CustomKey, CustomValue
 	            gc.setMinimalDaysInFirstWeek(4);
 	            gc.set(Integer.parseInt(anyo), Integer.parseInt(mes)-1, Integer.parseInt(dia)-1);
 	            semanaAnyo = Integer.toString(gc.get(Calendar.WEEK_OF_YEAR));
-	            diaSemana = Integer.toString(gc.get(Calendar.DAY_OF_WEEK));
+	            String dia_aux = days.get(gc.get(Calendar.DAY_OF_WEEK));
+	            if(dia_aux != null){
+	            	diaSemana = dia_aux;
+	            }
 
 				valor.setHora(hora);
 				valor.setDiaSemana(diaSemana);

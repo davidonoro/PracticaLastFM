@@ -34,3 +34,5 @@ SELECT u2.year, u2.semana, u2.sexo, u2.grupo, u2.tema, u2.plays, row_number() ov
 FROM ejercicio6 u2
 ) rs
 WHERE row <= 10;
+
+DROP TABLE ejercicio6;

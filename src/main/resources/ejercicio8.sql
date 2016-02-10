@@ -17,3 +17,5 @@ SELECT u2.user, u2.year, u2.mes, u2.grupo, u2.tema, u2.plays, row_number() over 
 FROM ejercicio8 u2
 ) rs
 WHERE row <= 10;
+
+DROP TABLE ejercicio8; 
